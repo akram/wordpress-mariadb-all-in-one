@@ -21,7 +21,7 @@ RUN sed -i 's/\/var\/www\/html/\/var\/www\/html\/wordpress/' /etc/httpd/conf/htt
 
 RUN mv /var/lib/mysql /var/lib/init-data/
 RUN mv /var/www/ /var/lib/init-data/ 
-RUN mkdir -p /var/lib/data ; rm -fr /var/www ; ln -s /var/lib/data/www /var/ ; ln -s /var/lib/data/mysql /var/lib/
+RUN mkdir -p /var/lib/data ; rm -fr /var/www ; rm -fr /var/lib/mysql/aria* ; ln -s /var/lib/data/www /var/ ; ln -s /var/lib/data/mysql /var/lib/
 RUN chown -R mysql:mysql /var/lib/mysql /var/lib/init-data/mysql/ /var/lib/data/mysql
 EXPOSE 80
 ADD supervisord.conf /tmp
